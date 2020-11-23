@@ -28,7 +28,7 @@ public class BountyHunter extends NameEntity {
     private String password;
 
     @Column("email")
-    private String email;git
+    private String email;
 
     @Column("power")
     private Long power;
