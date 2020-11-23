@@ -6,13 +6,11 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 
 @Getter
 @Setter
 @Entity
-@MappedSuperclass
-public class EquippedItem extends Item {
+public class OwnedItem extends Item {
 
     @ManyToOne
     @JoinColumn(name = "bounty_hunter_id")

@@ -26,7 +26,7 @@ public class DataLoader implements CommandLineRunner {
         loadData();
     }
 
-    private void loadData() {
+    private void loadData() throws Exception {
 
         BountyHunter hunter1 = new BountyHunter();
         hunter1.setName("Rzeju Hunter");

@@ -18,36 +18,39 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table("bounty_hunetrs")
+@Table(name="bounty_hunter")
 public class BountyHunter extends NameEntity {
 
-    @Column("login")
+    @Column(name="login")
     private String login;
 
-    @Column("password")
+    @Column(name="password")
     private String password;
 
-    @Column("email")
+    @Column(name="email")
     private String email;
 
-    @Column("power")
+    @Column(name="power")
     private Long power;
 
-    @Column("factor")
+    @Column(name="factor")
     private BigDecimal factor;
 
-    @Column("money")
+    @Column(name="money")
     private BigDecimal money;
 
-    @Column("image")
-    private Byte[] image;
-
-    @Column("type")
+    @Column(name="type")
     @Enumerated(EnumType.STRING)
     private BountyHunterType bountyHunterType;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
     private Set<EquippedItem> equippedItems = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
+    private Set<OwnedItem> ownedItems = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
+    private Set<BountyMission> missions = new HashSet<>();
 
     public BountyHunter addEquippedItems(EquippedItem item) {
         item.setBountyHunter(this);
@@ -55,20 +58,7 @@ public class BountyHunter extends NameEntity {
         return this;
     }
 
-    public Byte[] addImage(String path) throws IOException {
-        BufferedImage bufferedImage = ImageIO.read(new File(path));
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ImageIO.write(bufferedImage, "jpg", bos);
-        byte[] data = bos.toByteArray();
-        Byte[] result = new Byte[data.length];
-        int i = 0;
-        for(byte b : data) {
-            result[i] = b;
-            i++;
-        }
-        this.setImage(result);
-        return result;
-    }
+
 
 
 
