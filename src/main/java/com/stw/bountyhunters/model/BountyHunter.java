@@ -1,7 +1,9 @@
 package com.stw.bountyhunters.model;
 
 import com.stw.bountyhunters.model.enums.BountyHunterType;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.thymeleaf.util.ArrayUtils;
 
@@ -17,6 +19,7 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name="bounty_hunter")
 public class BountyHunter extends NameEntity {
@@ -51,6 +54,21 @@ public class BountyHunter extends NameEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bountyHunter")
     private Set<BountyMission> missions = new HashSet<>();
+
+    @Builder
+    public BountyHunter(Long id, String name, String login, String password, String email, Long power, BigDecimal factor, BigDecimal money, BountyHunterType bountyHunterType, Set<EquippedItem> equippedItems, Set<OwnedItem> ownedItems, Set<BountyMission> missions) {
+        super(id, name);
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.power = power;
+        this.factor = factor;
+        this.money = money;
+        this.bountyHunterType = bountyHunterType;
+        this.equippedItems = equippedItems;
+        this.ownedItems = ownedItems;
+        this.missions = missions;
+    }
 
     public BountyHunter addEquippedItems(EquippedItem item) {
         item.setBountyHunter(this);

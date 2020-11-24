@@ -1,8 +1,6 @@
 package com.stw.bountyhunters.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -12,17 +10,20 @@ import javax.persistence.OneToOne;
 @Getter
 @Setter
 @Entity
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class BountyMission extends NameEntity {
 
     @ManyToOne
     @JoinColumn(name = "bounty_hunter_id")
-    public final BountyHunter bountyHunter;
+    public  BountyHunter bountyHunter;
 
     @OneToOne
-    public final BountyTarget bountyTarget;
+    public BountyTarget bountyTarget;
 
-
-
-
+    @Builder
+    public BountyMission(Long id, String name, BountyHunter bountyHunter, BountyTarget bountyTarget) {
+        super(id, name);
+        this.bountyHunter = bountyHunter;
+        this.bountyTarget = bountyTarget;
+    }
 }
