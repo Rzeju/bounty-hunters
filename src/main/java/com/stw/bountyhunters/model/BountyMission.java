@@ -2,10 +2,7 @@ package com.stw.bountyhunters.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -18,6 +15,7 @@ public class BountyMission extends NameEntity {
     public  BountyHunter bountyHunter;
 
     @OneToOne
+    @JoinColumn(name = "bounty_target_id")
     public BountyTarget bountyTarget;
 
     @Builder

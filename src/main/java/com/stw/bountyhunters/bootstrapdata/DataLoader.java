@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -29,7 +30,7 @@ public class DataLoader implements CommandLineRunner {
     private void loadData() throws Exception {
 
         BountyHunter hunter1 = BountyHunter.builder().name("Rzeju Hunter").login("Rzeju").password("password")
-                .email("pandrzejak93@gmail.com").power(171717L).factor(new BigDecimal(1)).build();
+                .email("pandrzejak93@gmail.com").power(171717L).factor(new BigDecimal(1)).equippedItems(new HashSet<>()).build();
 
         EquippedItem item1 = EquippedItem.builder().name("Bracers").power(100L).buyPrice(1000L)
                 .sellPrice(100L).equipmentSlot(EquipmentSlot.BRACERS).build();
