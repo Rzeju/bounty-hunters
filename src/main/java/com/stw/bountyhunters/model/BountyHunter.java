@@ -65,9 +65,9 @@ public class BountyHunter extends NameEntity {
         this.factor = factor;
         this.money = money;
         this.bountyHunterType = bountyHunterType;
-        this.equippedItems = equippedItems;
-        this.ownedItems = ownedItems;
-        this.missions = missions;
+        this.equippedItems = new HashSet<>();
+        this.ownedItems = new HashSet<>();
+        this.missions = new HashSet<>();
     }
 
     public BountyHunter addEquippedItems(EquippedItem item) {
@@ -75,9 +75,5 @@ public class BountyHunter extends NameEntity {
         this.getEquippedItems().add(item);
         return this;
     }
-
-
-
-
 
 }

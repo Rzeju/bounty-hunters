@@ -30,7 +30,13 @@ public class DataLoader implements CommandLineRunner {
     private void loadData() throws Exception {
 
         BountyHunter hunter1 = BountyHunter.builder().name("Rzeju Hunter").login("Rzeju").password("password")
-                .email("pandrzejak93@gmail.com").power(171717L).factor(new BigDecimal(1)).equippedItems(new HashSet<>()).build();
+                .email("pandrzejak93@gmail.com").power(171717L).factor(new BigDecimal(1)).build();
+
+        BountyHunter hunter2 = BountyHunter.builder().name("Hunter 2").login("hunter_2").password("password_2")
+                .email("hunter2@gmail.com").power(2000L).factor(new BigDecimal(1)).build();
+
+        BountyHunter hunter3 = BountyHunter.builder().name("Hunter 3").login("hunter_3").password("password_3")
+                .email("hunter3@gmail.com").power(3000L).factor(new BigDecimal(1)).build();
 
         EquippedItem item1 = EquippedItem.builder().name("Bracers").power(100L).buyPrice(1000L)
                 .sellPrice(100L).equipmentSlot(EquipmentSlot.BRACERS).build();
@@ -38,6 +44,7 @@ public class DataLoader implements CommandLineRunner {
         hunter1.addEquippedItems(item1);
 
         bountyHunterRepository.save(hunter1);
-        equippedItemRepository.save(item1);
+        bountyHunterRepository.save(hunter2);
+        bountyHunterRepository.save(hunter3);
     }
 }

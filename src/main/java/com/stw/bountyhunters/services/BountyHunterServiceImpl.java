@@ -18,14 +18,13 @@ public class BountyHunterServiceImpl implements BountyHunterService {
 
     @Override
     public Set<BountyHunter> findAll() {
-        Set<BountyHunter> hunters = new HashSet<>();
-        bountyHunterRepository.findAll().forEach(hunters::add);
-        return hunters;
+        return new HashSet<>(bountyHunterRepository.findAll());
     }
 
     @Override
     public BountyHunter findById(Long aLong) {
-        return bountyHunterRepository.findById(aLong).orElse(null);
+
+        return bountyHunterRepository.findById(aLong).orElseThrow(() -> new RuntimeException("No Bounty Hunter for giving id = " + aLong));
     }
 
     @Override

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bounty Hunters</title>
+</head>
+<body>
+
+<h1 th:text="'Bounty Hunter'">Bounty Hunter</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Power</th>
+    </tr>
+    </thead>
+        <td th:text="${hunter.id}">1</td>
+        <td th:text="${hunter.login}">Login</td>
+        <td th:text="${hunter.password}">login@gmail.com</td>
+        <td th:text="${hunter.email}">999</td>
+        <td th:text="${hunter.power}">171717</td>
+    </tr>
+</table>
+
+</body>
+</html>
